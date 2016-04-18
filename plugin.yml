@@ -1,0 +1,8 @@
+main: me.herobrinedobem.htickets.HTickets
+name: HTickets
+version: 1.0
+description: Plugin de tickets
+
+commands:
+    ticket:
+        description: Todos os comandos de ticket
