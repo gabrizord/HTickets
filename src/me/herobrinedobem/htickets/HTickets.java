@@ -1,6 +1,9 @@
 package me.herobrinedobem.htickets;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -9,7 +12,8 @@ import org.bukkit.scheduler.BukkitScheduler;
 public class HTickets extends JavaPlugin {
 
 	private MySQL mysql;
-
+	Map<Player, Integer> delay = new HashMap<Player, Integer>();
+	
 	@Override
 	public void onEnable() {
 		if (!new File(this.getDataFolder(), "config.yml").exists()) {
@@ -23,6 +27,7 @@ public class HTickets extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		System.out.println("[HTickets] Plugin Desabilitado - Versao(" + this.getDescription().getVersion() + ")");
+		delay.clear();
 	}
 
 	public void scheduler() {
@@ -32,11 +37,11 @@ public class HTickets extends JavaPlugin {
 			public void run() {
 				for (final Player p : HTickets.this.getServer().getOnlinePlayers()) {
 					if (p.hasPermission("ticket.admin")) {
-						p.sendMessage(HTickets.this.getConfig().getString("Mensagens.Tickets_Abertos_Scheduler").replace("&", "ยง").replace("tickets", HTickets.this.mysql.getTicketsOpenNumber() + ""));
+						p.sendMessage(HTickets.this.getConfig().getString("Mensagens.Tickets_Abertos_Scheduler").replace("&", "ง").replace("tickets", HTickets.this.mysql.getTicketsOpenNumber() + ""));
 					}
 				}
 			}
-		}, 5 * 60 * 20, 0);
+		}, 60 * 20, 0);
 	}
 
 	public static HTickets geHTickets() {

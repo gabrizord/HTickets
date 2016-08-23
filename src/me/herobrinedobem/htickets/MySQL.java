@@ -35,7 +35,7 @@ public class MySQL {
 			final String sql = "SELECT * FROM respostas WHERE id='" + id + "'";
 			final ResultSet rs = this.stmt.executeQuery(sql);
 			while (rs.next()) {
-				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_Respostas_Template").replace("&", "ยง").replace("$resp$", rs.getString("staffer")).replace("$mensagem$", rs.getString("resposta")));
+				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_Respostas_Template").replace("&", "ง").replace("$resp$", rs.getString("staffer")).replace("$mensagem$", rs.getString("resposta")));
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();
@@ -47,13 +47,13 @@ public class MySQL {
 			Class.forName("com.mysql.jdbc.Driver");
 			final String sql = "SELECT * FROM tickets WHERE aberto='" + 0 + "' ORDER BY id";
 			final ResultSet rs = this.stmt.executeQuery(sql);
-			p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List").replace("&", "ยง"));
+			p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List").replace("&", "ง"));
 			if (rs.next()) {
 				while (rs.next()) {
-					p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List_Template").replace("&", "ยง").replace("$id$", rs.getInt("id") + "").replace("$player$", rs.getString("player")));
+					p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List_Template").replace("&", "ง").replace("$id$", rs.getInt("id") + "").replace("$player$", rs.getString("player")));
 				}
 			} else {
-				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Nenhum_Ticket_Aberto").replace("&", "ยง"));
+				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Nenhum_Ticket_Aberto").replace("&", "ง"));
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();
@@ -82,15 +82,15 @@ public class MySQL {
 			Class.forName("com.mysql.jdbc.Driver");
 			final String sql = "SELECT * FROM tickets WHERE aberto='" + 0 + "' ORDER BY id";
 			final ResultSet rs = this.stmt.executeQuery(sql);
-			p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List").replace("&", "ยง"));
+			p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List").replace("&", "ง"));
 			if (rs.next()) {
 				while (rs.next()) {
 					if (rs.getString("player").equalsIgnoreCase(p.getName())) {
-						p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List_Template").replace("&", "ยง").replace("$id$", rs.getInt("id") + "").replace("$player$", rs.getString("player")));
+						p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Ticket_List_Template").replace("&", "ง").replace("$id$", rs.getInt("id") + "").replace("$player$", rs.getString("player")));
 					}
 				}
 			} else {
-				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Nenhum_Ticket_Aberto").replace("&", "ยง"));
+				p.sendMessage(HTickets.geHTickets().getConfig().getString("Mensagens.Nenhum_Ticket_Aberto").replace("&", "ง"));
 			}
 		} catch (final Exception e) {
 			e.printStackTrace();

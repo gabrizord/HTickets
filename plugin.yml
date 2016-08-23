@@ -4,5 +4,6 @@ version: 1.0
 description: Plugin de tickets
 
 commands:
-    ticket:
-        description: Todos os comandos de ticket
+  ticket:
+    description: Manda um ticket
+    aliases: [suporte]
